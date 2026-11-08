@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">川产云</string>
+
+    <!-- 功能要求 1：HelloWorld 环境验证页 -->
+    <string name="hello_title">环境验证 · HelloWorld</string>
+    <string name="hello_text">Hello World!\n川产云 · 迭代 1 环境搭建验证通过\nAndroid Studio + SDK + AVD 已跑通</string>
+    <string name="hello_badge">Sprint 1 · 蜀芯小组 · 电子信息产业方向</string>
+
+    <!-- 注册页：文案与《移动应用开发实践作业设计》P7 UI Mock 对齐 -->
+    <string name="register_title">川产云 · 新用户注册</string>
+    <string name="register_subtitle">一次填写偏好，只看本产业、本地的动态</string>
+
+    <string name="label_phone">手机号</string>
+    <string name="hint_phone">请输入 11 位手机号</string>
+    <string name="label_password">设置密码</string>
+    <string name="hint_password">不少于 6 位，掩码显示</string>
+
+    <string name="label_gender">性别</string>
+    <string name="gender_male">男</string>
+    <string name="gender_female">女</string>
+
+    <string name="label_industry">感兴趣的产业（可多选）</string>
+    <string name="industry_electronics">电子信息</string>
+    <string name="industry_food">食品轻纺</string>
+    <string name="industry_equipment">装备制造</string>
+    <string name="industry_medical">医药健康</string>
+
+    <string name="label_city">所在城市</string>
+    <string name="btn_register">立即注册</string>
+    <string name="layout_switch_hint">长按标题可切换 LinearLayout / ConstraintLayout 对比版</string>
+
+    <!-- 表单校验（setError 文案与 BDD 行为逐字对应） -->
+    <string name="error_phone">请输入 11 位手机号</string>
+    <string name="error_phone_format">手机号格式不正确，请检查号段</string>
+    <string name="error_password">密码至少 6 位</string>
+    <string name="error_industry">请至少选择 1 个产业方向</string>
+
+    <!-- 注册成功 -->
+    <string name="toast_register_success">注册成功</string>
+    <string name="dialog_summary_title">注册完成</string>
+    <string name="dialog_summary_head">注册信息摘要</string>
+    <string name="dialog_positive">知道了</string>
+    <string name="summary_phone">手机号：%1$s</string>
+    <string name="summary_gender">性别：%1$s</string>
+    <string name="summary_industry">关注的产业：%1$s</string>
+    <string name="summary_city">所在城市：%1$s</string>
+    <string name="summary_foot">以上偏好将在迭代 2 传递到首页</string>
+
+    <string name="toast_layout_constraint">当前：ConstraintLayout 版（嵌套 ≤ 2 层）</string>
+    <string name="toast_layout_linear">当前：LinearLayout 教学对比版（嵌套 3 层）</string>
+</resources>

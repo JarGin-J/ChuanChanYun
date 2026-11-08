@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "cn.scyun.app-mergeDebugResources-21:/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "map": [
+                {
+                    "source": "D:\\移动应用开发\\作业一\\ChuanChanYun_Sprint1\\app\\src\\main\\res\\values-sw600dp\\dimens.xml",
+                    "from": {
+                        "startLines": "14,10,9,13,8,6,12,11,7",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "555,365,317,509,270,176,460,414,224",
+                        "endColumns": "44,48,47,45,46,47,48,45,45",
+                        "endOffsets": "595,409,360,550,312,219,504,455,265"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "611,656,705,753,799,846,894,943,989",
+                        "endColumns": "44,48,47,45,46,47,48,45,45",
+                        "endOffsets": "651,700,748,794,841,889,938,984,1030"
+                    }
+                },
+                {
+                    "source": "D:\\gradle\\caches\\9.4.1\\transforms\\cc981cdec9f496631c6bb32a39388d9c\\transformed\\appcompat-1.7.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,124,193,263,337,413,472,543",
+                        "endColumns": "68,68,69,73,75,58,70,67",
+                        "endOffsets": "119,188,258,332,408,467,538,606"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  迭代 1 · 注册页【ConstraintLayout 版】（默认加载，对应教材第 2 章布局管理器）
+  ─────────────────────────────────────────────────────────────
+  嵌套层级：ConstraintLayout 内所有控件都是它的直接子 View，唯一 ViewGroup 是
+            RadioGroup（内含 2 个 RadioButton）→ 布局子树仅 2 层 ViewGroup，满足
+            「ConstraintLayout 版本嵌套 ≤ 2 层」的验收要求。
+            产业兴趣 4 个 CheckBox 用水平链 + 列对齐约束排成 2×2，不再套一层容器。
+  平板适配：左右留白取自 values-sw600dp/dimens.xml，同一份 XML 自动收成居中窄栏。
+  滚动容器：外层 ScrollView 只负责软键盘弹起 / 小屏滚动，不参与约束布局的嵌套。
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/scyun_bg"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <!-- 标题：长按可在两套布局之间切换（课堂演示用） -->
+        <TextView
+            android:id="@+id/tv_reg_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/reg_side_margin"
+            android:layout_marginTop="@dimen/reg_top_margin"
+            android:layout_marginEnd="@dimen/reg_side_margin"
+            android:text="@string/register_title"
+            android:textColor="@color/scyun_primary"
+            android:textSize="@dimen/reg_title_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_reg_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/register_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_subtitle_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_reg_title" />
+
+        <!-- ① 手机号 -->
+        <TextView
+            android:id="@+id/tv_label_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/label_phone"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_reg_subtitle" />
+
+        <EditText
+            android:id="@+id/et_reg_phone"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/reg_field_height"
+            android:layout_marginTop="4dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_edit"
+            android:hint="@string/hint_phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/reg_body_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_phone" />
+
+        <!-- ② 密码 -->
+        <TextView
+            android:id="@+id/tv_label_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:text="@string/label_password"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_phone" />
+
+        <EditText
+            android:id="@+id/et_reg_password"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/reg_field_height"
+            android:layout_marginTop="4dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_edit"
+            android:hint="@string/hint_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/reg_body_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_password" />
+
+        <!-- ③ 性别：RadioGroup 是本布局内唯一的 ViewGroup 嵌套 -->
+        <TextView
+            android:id="@+id/tv_label_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:text="@string/label_gender"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_password" />
+
+        <RadioGroup
+            android:id="@+id/rg_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_gender">
+
+            <RadioButton
+                android:id="@+id/rb_male"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/scyun_primary"
+                android:checked="true"
+                android:minHeight="36dp"
+                android:text="@string/gender_male"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/reg_body_size" />
+
+            <RadioButton
+                android:id="@+id/rb_female"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/scyun_primary"
+                android:minHeight="36dp"
+                android:text="@string/gender_female"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/reg_body_size" />
+        </RadioGroup>
+
+        <!-- ④ 产业兴趣：4 个 CheckBox 用「水平链 + 列对齐」排成 2×2，零额外容器 -->
+        <TextView
+            android:id="@+id/tv_label_industry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:text="@string/label_industry"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/rg_gender" />
+
+        <CheckBox
+            android:id="@+id/cb_industry_electronics"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:buttonTint="@color/scyun_primary"
+            android:text="@string/industry_electronics"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/reg_body_size"
+            app:layout_constraintEnd_toStartOf="@id/cb_industry_food"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_industry" />
+
+        <CheckBox
+            android:id="@+id/cb_industry_food"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:buttonTint="@color/scyun_primary"
+            android:text="@string/industry_food"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/reg_body_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/cb_industry_electronics"
+            app:layout_constraintTop_toTopOf="@id/cb_industry_electronics" />
+
+        <CheckBox
+            android:id="@+id/cb_industry_equipment"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:buttonTint="@color/scyun_primary"
+            android:text="@string/industry_equipment"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/reg_body_size"
+            app:layout_constraintEnd_toEndOf="@id/cb_industry_electronics"
+            app:layout_constraintStart_toStartOf="@id/cb_industry_electronics"
+            app:layout_constraintTop_toBottomOf="@id/cb_industry_electronics" />
+
+        <CheckBox
+            android:id="@+id/cb_industry_medical"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:buttonTint="@color/scyun_primary"
+            android:text="@string/industry_medical"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/reg_body_size"
+            app:layout_constraintEnd_toEndOf="@id/cb_industry_food"
+            app:layout_constraintStart_toStartOf="@id/cb_industry_food"
+            app:layout_constraintTop_toBottomOf="@id/cb_industry_food" />
+
+        <!-- ⑤ 所在城市 -->
+        <TextView
+            android:id="@+id/tv_label_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:text="@string/label_city"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/cb_industry_equipment" />
+
+        <Spinner
+            android:id="@+id/sp_city"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/reg_field_height"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_spinner"
+            android:paddingStart="12dp"
+            android:paddingEnd="32dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_city" />
+
+        <!-- ⑥ 提交 -->
+        <Button
+            android:id="@+id/btn_register_submit"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/reg_button_height"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_btn_primary"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_register"
+            android:textColor="@color/card_white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/sp_city" />
+
+        <TextView
+            android:id="@+id/tv_layout_hint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/layout_switch_hint"
+            android:textColor="@color/text_hint"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_reg_title"
+            app:layout_constraintStart_toStartOf="@id/tv_reg_title"
+            app:layout_constraintTop_toBottomOf="@id/btn_register_submit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

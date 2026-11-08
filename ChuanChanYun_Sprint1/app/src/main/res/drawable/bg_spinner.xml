@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Spinner 背景：复用输入框圆角描边，右侧叠加下拉三角（覆盖系统背景后仍保留「可展开」暗示） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/card_white" />
+            <corners android:radius="10dp" />
+            <stroke android:width="1dp" android:color="@color/divider" />
+        </shape>
+    </item>
+    <item
+        android:width="12dp"
+        android:height="12dp"
+        android:right="14dp"
+        android:gravity="end|center_vertical"
+        android:drawable="@drawable/ic_arrow_down" />
+</layer-list>

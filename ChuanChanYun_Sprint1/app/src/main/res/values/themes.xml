@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      NoActionBar：把 56dp 的系统标题栏让给表单，保证 1080×1920（360×640dp）小屏不截断。
+      迭代 1 不引入 Material 库，主题基于 AppCompat，控件全部使用 Android 原生 widget。
+    -->
+    <style name="Theme.Scyun" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/scyun_primary</item>
+        <item name="colorPrimaryDark">@color/scyun_primary_dark</item>
+        <item name="colorAccent">@color/scyun_primary_light</item>
+        <item name="android:statusBarColor">@color/scyun_primary_dark</item>
+        <item name="android:windowBackground">@color/scyun_bg</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+</resources>

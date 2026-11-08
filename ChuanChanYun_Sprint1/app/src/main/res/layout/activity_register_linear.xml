@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  迭代 1 · 注册页【LinearLayout 教学对比版】（功能与默认版完全一致，控件 id 一一对应）
+  ─────────────────────────────────────────────────────────────
+  教学用途：按教材第 2 章先用 LinearLayout 实现一遍，再用 ConstraintLayout 重写。
+  嵌套层级：从布局根 register_root 起算，本版为「根 LinearLayout → 分组容器 →
+            行容器」共 3 层 ViewGroup（连同窗口级 ScrollView 为 4 层）；
+            ConstraintLayout 版从布局根起算仅 2 层。口径与《布局层级核对.txt》一致，
+            Layout Inspector 中对比一目了然。
+  切换方式：注册页长按标题即可在本版与 ConstraintLayout 版之间切换（同一 Activity 代码）。
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/scyun_bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/register_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/reg_side_margin"
+        android:paddingTop="@dimen/reg_top_margin"
+        android:paddingEnd="@dimen/reg_side_margin"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/tv_reg_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_title"
+            android:textColor="@color/scyun_primary"
+            android:textSize="@dimen/reg_title_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_reg_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/register_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_subtitle_size" />
+
+        <TextView
+            android:id="@+id/tv_label_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/label_phone"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size" />
+
+        <EditText
+            android:id="@+id/et_reg_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/reg_field_height"
+            android:layout_marginTop="4dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_edit"
+            android:hint="@string/hint_phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/reg_body_size" />
+
+        <TextView
+            android:id="@+id/tv_label_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:text="@string/label_password"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size" />
+
+        <EditText
+            android:id="@+id/et_reg_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/reg_field_height"
+            android:layout_marginTop="4dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_edit"
+            android:hint="@string/hint_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/reg_body_size" />
+
+        <TextView
+            android:id="@+id/tv_label_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:text="@string/label_gender"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size" />
+
+        <RadioGroup
+            android:id="@+id/rg_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_male"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/scyun_primary"
+                android:checked="true"
+                android:minHeight="36dp"
+                android:text="@string/gender_male"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/reg_body_size" />
+
+            <RadioButton
+                android:id="@+id/rb_female"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/scyun_primary"
+                android:minHeight="36dp"
+                android:text="@string/gender_female"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/reg_body_size" />
+        </RadioGroup>
+
+        <!--
+          LinearLayout 版的对比点：为了把「标签 + 2×2 产业兴趣」做成一个分组，
+          需要「分组容器 → 行容器 → CheckBox」两级额外嵌套；
+          ConstraintLayout 版用水平链把 4 个 CheckBox 直接约束在根布局上，零额外容器。
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_label_industry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_industry"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/reg_label_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_industry_electronics"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/scyun_primary"
+                    android:text="@string/industry_electronics"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/reg_body_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_industry_food"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/scyun_primary"
+                    android:text="@string/industry_food"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/reg_body_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_industry_equipment"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/scyun_primary"
+                    android:text="@string/industry_equipment"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/reg_body_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_industry_medical"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/scyun_primary"
+                    android:text="@string/industry_medical"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/reg_body_size" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_label_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/reg_section_gap"
+            android:text="@string/label_city"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/reg_label_size" />
+
+        <Spinner
+            android:id="@+id/sp_city"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/reg_field_height"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_spinner"
+            android:paddingStart="12dp"
+            android:paddingEnd="32dp"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/btn_register_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/reg_button_height"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_btn_primary"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_register"
+            android:textColor="@color/card_white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_layout_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/layout_switch_hint"
+            android:textColor="@color/text_hint"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+</ScrollView>

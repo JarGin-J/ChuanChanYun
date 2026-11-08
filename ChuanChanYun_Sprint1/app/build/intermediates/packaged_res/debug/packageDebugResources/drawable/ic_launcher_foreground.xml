@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 应用图标前景：云 + 芯片电路，呼应「川产云 · 电子信息产业方向」 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M43,62c-5.52,0 -10,-4.48 -10,-10 0,-4.9 3.52,-8.98 8.17,-9.84C42.71,35.62 48.79,30.5 56,30.5c7.4,0 13.6,5.4 14.76,12.47C76.44,43.35 81,48.12 81,54c0,6.08 -4.92,8 -11,8L43,62z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.55"
+        android:pathData="M32,78L44,62L52,72L60,58L76,78Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.9"
+        android:pathData="M50,50h8v8h-8zM54,44h1v6h-1zM54,58h1v6h-1zM44,54h6v1h-6zM58,54h6v1h-6z" />
+</vector>

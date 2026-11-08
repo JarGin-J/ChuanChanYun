@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "cn.scyun.app-debug-23:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "cn.scyun.app-main-25:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "cn.scyun.app-debug-23:/drawable_ic_arrow_down.xml.flat",
+        "source": "cn.scyun.app-main-25:/drawable/ic_arrow_down.xml"
+    },
+    {
+        "merged": "cn.scyun.app-debug-23:/drawable_bg_spinner.xml.flat",
+        "source": "cn.scyun.app-main-25:/drawable/bg_spinner.xml"
+    },
+    {
+        "merged": "cn.scyun.app-debug-23:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "cn.scyun.app-main-25:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "cn.scyun.app-debug-23:/drawable_bg_edit.xml.flat",
+        "source": "cn.scyun.app-main-25:/drawable/bg_edit.xml"
+    },
+    {
+        "merged": "cn.scyun.app-debug-23:/drawable_bg_btn_primary.xml.flat",
+        "source": "cn.scyun.app-main-25:/drawable/bg_btn_primary.xml"
+    },
+    {
+        "merged": "cn.scyun.app-debug-23:/layout_activity_register.xml.flat",
+        "source": "cn.scyun.app-main-25:/layout/activity_register.xml"
+    },
+    {
+        "merged": "cn.scyun.app-debug-23:/layout_activity_register_linear.xml.flat",
+        "source": "cn.scyun.app-main-25:/layout/activity_register_linear.xml"
+    }
+]
